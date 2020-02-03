@@ -1,0 +1,92 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>Upstart</title>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <meta name="keywords" content="poem, generator" />
+  <meta name="date" content="2013-10-09" />
+  <!--
+My goal for this project was to change Nick M's 'Upstart' project into a outfit generator program. This program will randomly 
+select what the user should wear that day. Each tile will pick out a certain type of accessory, top, bottom and shoe. 
+Here are the changes that I've made:
+Changed the title font and colors. I made 'wardrobe' and 'by Jane K' different colors for emphasis. I was able to break up the entire title and assign different colors by using " <span style="color: blank"> word,</span> "
+Rather than hyperlinking the name of the author (which was previously Nick M), I hyperlinked my name to my LinkedIn profile.
+Changed the speed from 500 to 800
+Changed heading font type, font color, and size.
+Changed tile background and text colors.
+Changed the names to articles of clothing. The first 'name' will show some type of top and the second 'name' will show some type of bottom.
+Upstart Name Generator
+copyright (c) 2014 Nick Montfort <nickm@nickm.com>
+based on a 1952 program by Christopher Strachey
+Permission to use, copy, modify, and/or distribute this software for any
+purpose with or without fee is hereby granted, provided that the above
+copyright notice and this permission notice appear in all copies.
+
+THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES
+WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF
+MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY
+SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES
+WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN
+ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF OR
+IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
+
+Updated 10 March 2015 to correct the word lists. Sources are photographs
+of Christoper Stachey's notes in the Bodleian Library from J.R. Carpenter
+and table 14.1 in Noah Wardrip-Fruin's article "Digital Media Archaeology."
+
+Updated 28 August 2019 to add a link to "The Ferranti Mark 1 Gallery."
+-->
+  <style type="text/css">a:link {text-decoration:none;}</style>
+</head>
+<body style="font-family: 'Zerif'; background:#F5F1EC; color:white; padding:14px 28px 0 28px">
+<div style="text-align:center; font-size:32px;color:#241B89; padding: 14px 0 28px 0;"><b style="font-size:32px"><span style="color: #E3883F">Wardrobe</span><span style="color: #9F886A"> gives you inspiration for your next outfit.</span><span style="color: #E3883F"> By <a href="https://www.linkedin.com/in/kimjane210/">Jane K.</a></div></span>
+<div style="width:850px; font-size:30px; margin-left:auto; margin-right:auto">
+<div id="dotcom1" style="text-align:center; height:350px; width:400px; line-height:350px; background:#DCCFCD; color:#9B908E; float:left"></div>
+<div id="dotcom3" style="text-align:center; height:350px; width:400px; line-height:350px; background:#D1B597; color:#EFE8DB; float:right"></div>
+<div style="height:38px; clear:both"></div>
+<div id="dotcom4" style="text-align:center; height:350px; width:400px; line-height:350px; background:#D1B597; color:#EFE8DB; float:left; margin-bottom:28px"></div>
+<div id="dotcom2" style="text-align:center; height:350px; width:400px; line-height:350px; background:#DCCFCD; color:#9B908E; float:right; margin-bottom: 28px"></div>
+</div>
+<script type="text/javascript">
+var panel = 1, names = [
+    ['Blouse,', ' Skinny Jeans'],
+    ['T-Shirt,', ' Slacks'],
+    ['Tunic,', ' Leggings'],
+    ['Tube Top,', ' Short Skirt'],
+    ['Camisole,', ' Maxi Skirt'],
+    ['Sweater,', ' Sweatpants'],
+    ['Sweatshirt,', ' Leather Pants'],
+    ['Crop Top,', ' Boyfriend Jeans'],
+    ['One Shoulder,', ' Denim Shorts'],
+    ['Tank Top,', ' Run Shorts'],
+    ['Tunic,', ' Skort'],
+    ], fonts = [
+    'Serif'
+    ]
+function rand_index(len) {
+    return Math.floor(Math.random() * len);
+}
+function update() {
+    "use strict";
+    var first, second, font, dotcomdiv = document.getElementById('dotcom' + panel);
+    first = rand_index(names.length);
+    second = rand_index(names.length - 1);
+    if (second === first)
+        { second = names.length - 1; }
+    dotcomdiv.innerHTML = names[first][0] + names[second][1];
+    panel = panel + 1;
+    if (panel === 5)
+        { panel = 1; }
+    font = fonts[rand_index(fonts.length)];
+    dotcomdiv.style.fontFamily = font;
+}
+update();
+update();
+update();
+update();
+setInterval(update, 800);
+</script>
+</body>
+</html>
